@@ -191,7 +191,7 @@ img {
     display: table;
     clear: both;
   }
-  .test{
+  #test{
    width: 50%;
    height: 1900px;
    background-color: red;
@@ -199,7 +199,9 @@ img {
   #login-form
 {
     display: none;
-    
+    position: fixed;
+    z-index: 100;
+    width: -webkit-fill-available;
 }
 .form-box
 {
