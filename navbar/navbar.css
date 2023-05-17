@@ -1,0 +1,169 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body{
+    font-family: Mostra Nuova;
+}
+.Full-header{
+    display: flex;
+    flex-direction: row;
+    padding: 3px 40px;
+    overflow: hidden;
+    
+}
+@media (min-width: 576px)
+{
+    .logo img {
+        width: 150px;
+    }
+}
+@media (min-width: 992px), print
+{
+    .logo img {
+        max-height: inherit;
+    }
+}
+.logo-container{
+    width: 20% ;
+}
+.logo img {
+    display: block;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.menu-container{
+    display: flex;
+    width: 70%;
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: Mostra Nuova;
+    font-size: 1.125rem
+
+}
+.Header-menu{
+    font-weight: 500;
+}
+@media (min-width: 1200px)
+{
+    .menu-name {
+        color:black;
+        line-height: 50px;
+        padding: 0 10px;
+        text-decoration: none;
+        box-sizing: border-box;
+        position: relative;
+        display: inline-block;
+        font-family: Mostra Nuova;
+        font-size: 18px;
+    }
+}
+.icon-container{
+    display: flex;
+    width: 20%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.icon-container > button{
+    background: none;
+    border: none;
+}
+.fa-solid{
+    color: #877d79;
+    font-size: 20px;
+    -webkit-text-stroke: 0.5px white;
+}
+.fa-bars{
+    font-size: 30px;
+    font-weight: lighter;
+}
+.dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: inherit;
+    font: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    position: fixed;
+    background-color: #f9f9f9;
+    width: 100%;
+    left: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 30;
+    opacity:0;
+    visibility: hidden;
+    margin-top: 15px;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  /* Mega Menu header, if needed */
+  .dropdown-content .header {
+    background: white;
+    padding: 16px;
+    color: black;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    visibility: visible;
+    opacity: inherit;
+    transform: scaleX(1);
+    transform-origin: left;
+    
+  }
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    background-color:white;
+    height: 250px;
+  }
+  
+  /* Style links inside the columns */
+  .column a {
+    float: none;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a background color on hover */
+  .column a:hover {
+    background-color: red;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
