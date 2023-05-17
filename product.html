@@ -5,8 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>product page</title>
+    <link rel="stylesheet" href="product.css">
 </head>
 <body>
-    <h1>This is product page.</h1>
+    <div class="product_container">
+        <div id="left_container">
+
+            <div class="category">
+                <ul>
+                    <li>Category</li>
+                    <li><a href="">Coffee</a></li>
+                    <li><a href="">Coffee makers</a></li>
+                    <li><a href="">Accessories</a></li>
+                    <li><a href="">Dolce & Gabbana</a></li>
+                </ul>
+            </div>
+            <div class="cups">
+                <ul>
+                    <li>Cups</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                </ul>
+            </div>
+            <div class="line">
+                <ul>
+                    <li>Line</li>
+                    <li><a href="">Bialetti</a></li>
+                    <li><a href="">Coffee makers spare parts</a></li>
+                    <li><a href="">Milk pitcher</a></li>
+                    <li><a href="">Milk frother</a></li>
+                </ul>
+            </div>
+            <div class="roasting">
+                <ul>
+                    <li>Roasting</li>
+                    <li><a href="">Medium</a></li>
+                    <li><a href="">Light</a></li>
+                </ul>
+            </div>
+        </div>
+    
+    
+        <div id="right_container">
+            <h1 id="title_heading">
+                Products
+            </h1>
+            <div class="sort_items">
+                <div id="items">4 Items / 12</div>
+                <div id="sorting">
+                    <select onchange="sortApply()" id="sort"> 
+                        <option id="default" value="">sort by price</option>
+                        <option id="price" value="HTL">High To Low</option>
+                        <option id="" value="LTH">Low To High</option>
+                    </select>
+                </div>
+            </div>
+    
+            <div id="product_container">
+    
+            </div>
+            <div id="pagination">
+               
+            </div>
+        </div>
+    </div>
+
+    <script src="product.js"></script>
 </body>
 </html>

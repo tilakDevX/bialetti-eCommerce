@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital@1&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.product_container{
+    font-family: 'Anonymous Pro', monospace;
+    color: black;
+    display: flex;
+
+}
+#left_container{
+    width: 25%;
+    margin-left: 2rem;
+    /* font-family: "Mostra Nuova"; */
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 22px;
+}
+#right_container{
+    width: 75%;
+    text-align: center;
+}
+
+#right_container .sort_items{
+    display: flex;
+    justify-content: space-around;
+}
+.category ul, .cups ul, .line ul, .roasting ul{
+    list-style: none;
+}
+li:first-child{
+    color: #6b5b56;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    line-height: 19.9px;
+}
+.category ul li a, .cups ul li a, .line ul li a, .roasting ul li a{
+    text-decoration: none;
+    color: black;
+}
+ .cups, .line , .roasting  {
+    margin-top: 10px ;
+}
+
+
+.card-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.card-img img{
+    width: 80%;
+}
+
+#pagination{
+    display: flex;
+    justify-content: center;
+}
