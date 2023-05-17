@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment page</title>
+    <style>
+         #deli_Vol {
+            width: 85%;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            gap: 182px;
+        }
+
+        #deli_Vol>div:first-child {
+            width: 50%;
+        }
+
+        #deli_Vol>div:nth-child(2) {
+            width: 30%;
+            /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+        }
+
+        #deliverydetails {
+            /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding: 20px;
+        }
+
+        #deliverydetails>div>form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            /* width:50%; */
+        }
+
+        #deliverydetails>div>form > input {
+            width:90%;
+        }
+
+        #app_voch>div>div {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #app_voch>div>div {
+            margin-bottom: 15px;
+        }
+
+        #app_voch>div>div>input {
+            width: 100%;
+        }
+
+        #app_voch>div>button {
+            width: 100%;
+        }
+
+        #app_voch>div:first-child {
+            margin-top: 10px;
+            background-color: black;
+            color: rgb(216, 207, 189);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        #app_voch>div {
+            /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding: 10px;
+            margin-bottom: 0px;
+            margin-top: -10px;
+        }
+        #app_voch>h2{
+            margin-top: 30px;
+        }
+        #app_voch>div>div>input{
+            padding:10px;
+        } 
+        #app_voch>div>button {
+            padding: 5px;
+            width:100%;
+            background-color: black;
+            color: rgb(216, 207, 189);
+        }
+        #order_sum {
+            /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;  */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        #order_sum>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #btninp {
+            width: 100%;
+            background-color: black;
+            color: rgb(216, 207, 189);
+            padding: 5px;
+            font-size: larger;
+            /* border-radius: 8px; */
+            margin-top: 15px 0px;
+            margin: 20px -5px 5px -5px;
+        }
+    </style>
+</head>
+<body>
+   <div id="deli_Vol">
+    <div id="deliverydetails">
+        <!-- <h2>Customer</h2> -->
+        <div>
+            <form id="payment-form">
+                <h2>CUSTOMER</h2>
+                <br/>
+                <input type="text" placeholder="Full Name" id="fullname">
+                <input type="text" placeholder="Mobile Number" id="mobile">
+            <!-- </form> -->
+        <!-- </div> -->
+        <!-- <div> -->
+            <h2>SHIPPING ADDRESS</h2>
+            <br/>
+            <!-- <form> -->
+                <!-- <input type="text" placeholder="Delivery to Home/Office" id="home_office"> -->
+                <input type="text" placeholder="Area" id="area">
+                <input type="text" placeholder="City" id="city">
+                <input type="text" placeholder="State" id="state">
+                <input type="number" placeholder="PinCode" id="pincode">
+            <!-- </form> -->
+        <!-- </div> -->
+
+                <h2>PAYMENT DETAILS</h2>
+                <br/>
+                <!-- <form> -->
+                <input type="number" placeholder="Card Number" id="card-number">
+                <input type="text" placeholder="Card Holder Name" id="name">
+                <input type="number" placeholder="CVV" id="cvv">
+                <input type="text" placeholder="01/29" id="expiry-date">
+                <!-- <input type="Submit" id="btninp"> -->
+                <!-- <button id="btninp">Submit</button> -->
+            </form>
+            <br/>
+            <button type="submit" id="btninp" form="payment-form">PLACE ORDER</button>
+        </div>
+    </div>
+    <div id="app_voch">
+        <div>APPLY PROMO CODE</div>
+        <div>
+            <div>
+                <input type="text" placeholder="Gift card or discount code" id="promocode">
+                <!-- <input type="Submit" placeholder="Apply"> -->
+            </div>
+            <button onclick="applypromo()">APPLY</button>
+        </div>
+        <h2>ORDER SUMMARY</h2>
+        <div id="order_sum">
+            <div>
+                <p>Subtotal</p>
+                <p class="subtotal">0</p>
+            </div>
+            <div>
+                <p>Discount</p>
+                <p class="after_promo_code_apply">0</p>
+            </div>
+            <div>
+                <p>Shipping</p>
+                <p id="shipping_chage_fix_to_5$">5 $</p>
+            </div>
+            <div>
+                <p style="font-weight: bold;">Order Total</p>
+                <p id="total_order_price">0</p>
+            </div>
+        </div>
+    </div>
+</div> 
+</body>
+</html>
