@@ -24,12 +24,15 @@ window.onclick = function(event)
 
 document.querySelector(".submit-btn").addEventListener("click", display);
 
-
+var loginpass = document.getElementById("login-pass").value;
+console.log(document.getElementById("login-pass").value);
 
 function display(){
    const close = document.getElementById("login-form");
-
-   close.style.display = "none";
+  
+   if(document.getElementById("login-pass").value!=""&&document.getElementById("login-pass").value!=""){
+close.style.display = "none";
+   }
 }
 
 
