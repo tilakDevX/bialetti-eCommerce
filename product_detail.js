@@ -168,7 +168,7 @@ let bottom_container = document.getElementById("bottom_container")
         video.setAttribute('playsinline', '');
 
         const source = document.createElement('source');
-        source.src = 'https://www.bialetti.com/media/video/perfetto-moka-dolce-e-gabbana.mp4';
+        source.src = element.video
         source.type = 'video/mp4';
 
         // Add the source element to the video element
