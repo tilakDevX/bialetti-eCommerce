@@ -46,13 +46,14 @@ img {
 }
 .menu-container{
     display: flex;
-    width: 70%;
-    
+    width: 65%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     font-family: Mostra Nuova;
+    
 }
+
 .Header-menu{
     font-weight: 500;
 }
@@ -77,6 +78,36 @@ img {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+}
+@media screen and (max-width: 1480px){
+  .menu-container{
+    display: none;
+  }
+  .Full-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  .logo-container{
+    width: 40%;
+  }
+  .icon-container{
+    width: 20%;
+  }
+}
+@media screen and (max-width: 1000px){
+  .icon-container{
+    width: 20%;
+  }
+}
+@media screen and (max-width: 700px){
+  .icon-container{
+    width: 30%;
+  }
+}
+@media screen and (max-width: 410px){
+  .icon-container{
+    width: 40%;
+  }
 }
 .icon-container > button{
     background: none;
