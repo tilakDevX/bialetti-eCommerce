@@ -103,7 +103,19 @@ dataArr.map(function(ele){
 
 }
 
+const magni = document.getElementById("magniglass");
+magni.addEventListener("click", displaysearch);
 
+function displaysearch(){
+    const searchbar = document.getElementById("search")
+    if(searchbar.style.display ="none"){
+        searchbar.style.display = "block";
+    }
+    else if(searchbar.style.display ="block"){
+        searchbar.style.display = "none";
+    }
+   
+}
 
 
 

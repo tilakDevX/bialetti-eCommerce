@@ -122,7 +122,7 @@ img {
     border: none;
 }
 .fa-solid{
-    color: #877d79;
+    color: black;
     font-size: 20px;
     -webkit-text-stroke: 0.5px white;
 }
@@ -397,4 +397,17 @@ span
   .menu-container{
     display: none;
   }
+}
+#search-bar #search{
+ 
+  position: absolute;
+  top: 100px;
+  right: 70px;
+  border: 0;
+  background-color: transparent;
+  padding-left: 20px;
+  min-height: 45px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  width: 350px;
+  z-index: 50;
 }

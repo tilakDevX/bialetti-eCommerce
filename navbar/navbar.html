@@ -80,9 +80,9 @@
                         </div>
                     </div>
                     <div class="icon-container">
-                       <button>
-                        <a href="#">
-                            <i class="fa-solid fa-magnifying-glass"></i>
+                       <button id="magniglass" >
+                        <a  href="#">
+                            <i  class="fa-solid fa-magnifying-glass"></i>
                         </a>
                        </button>
                        <button onclick="document.getElementById('login-form').style.display='block'">
@@ -95,12 +95,14 @@
                             <i class="fa-solid fa-cart-plus"></i>
                         </a>
                        </button>
-                       <button>
+                       <button >
                         <a href="#">
                             <i class="fa-solid fa-bars"></i>
                         </a>
                        </button>
-                       
+                       <form id="search-bar" >
+                        <input type="text" id="search" placeholder="Search entire store here..." style="display: none;">
+                       </form>
                     </div>
                 </div>
             </div>
