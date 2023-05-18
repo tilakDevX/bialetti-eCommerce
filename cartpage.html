@@ -27,7 +27,7 @@
         }
         #cartNav > button{
             width: 10%;
-        margin: 30px;
+            margin: 30px;
         }
 
         #checkbox>p {
@@ -50,15 +50,62 @@
         #parent>div>h4{
             text-align: center;
         }
+        
         #parent>div>button{
-            width:100%;
-            justify-content: center;
-            /* background-color: rgba(105, 4, 4, 0.884); */
-            border-color: rgb(134, 133, 133);
+            display: block;
+            margin: 0 auto;
+            width:60%;
             border-radius: 15px;
             padding: 5px;
+            justify-content: center;
+            background-color: rgba(105, 4, 4, 0.884);
+            border-color: rgb(134, 133, 133);
         }
 
+        img{
+            width:30%;
+        }
+        #cartDiv{
+            display: flex;
+            flex-direction: column;
+            margin: 20px 10px 5px 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+       
+        .product-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 10px 0 10px;
+            margin: 5px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+
+        .product-container > div:first-child{
+            display: flex;
+            flex-direction: column;
+            margin-right:2px;
+        }
+        .product-container > img{
+            width:30%;
+        }
+
+        .product-container > div:last-child {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .product-container > div:last-child > button {
+            width: 10%;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: auto;
+            text-align:center;
+            background-color:red;
+            color:white;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -67,22 +114,16 @@
             <div id="cartNav">
                 <button><</button>
                 <h1>MY CART<span id="countitems"></span></h1>
-                <button>Clear cart </button>
+                <button id="clearCart">Clear cart </button>
             </div>
-            <h4>YOUR ORDER IS QUALIFY FOR FREE SHIPPING</h4>
+            <h4 id="freeShippingText"></h4>
             <button id="just_for_design"></button>
-            <div id="tablediv">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Quantity</th>
-                            <th>Sub-Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody"></tbody>
-                </table>
+            <div id="cartDiv">
+            
             </div>
-            <div id="checkbox">
+            <input type="checkbox" id="giftCheck"  value="gift" onclick="giftBoxCheck()">
+            <label for="checkBox"> This order is a gift</label><br>
+            <div id="checkout">
                 <p>Subtotal : <span id="showtotal">0</span></p>
                 <a href="paymentPage.html"><button>Checkout</button></a>
             </div>
@@ -90,3 +131,132 @@
     </div>
 </body>
 </html>
+
+<script>
+    const cartDiv = document.querySelector("#cartDiv");
+    const getProductData = async () => {
+        try {
+            const res = await fetch("https://bialettiserver.onrender.com/products");
+            const data = await res.json();
+            console.log(data);
+            displayProductData(data);
+        } catch (err) {
+            console.log("Error: fetching in product data");
+        }
+    };
+
+    const displayProductData = (data) => {
+        var count=0;
+        var sum=0;
+        data.forEach(product => {
+            const productDiv = document.createElement('div')
+            productDiv.classList.add('product-container');
+
+            // const imgDiv = document.createElement('div');
+            const image = document.createElement('img');
+            image.src = product.img1;
+            // imgDiv.appendChild(image);
+        
+            const detailDiv = document.createElement('div')
+            const name = document.createElement('h2');
+            name.textContent = product.product_name;
+            detailDiv.appendChild(name);
+
+            const price = document.createElement('p');
+            price.textContent = `Price: $${product.price}`;
+            detailDiv.appendChild(price);
+
+            
+            const quantityDiv = document.createElement('div')
+            var increase=document.createElement("button");
+            increase.textContent="+";
+            increase.onclick=function(){
+                increaseval(quantity);
+            };
+            function increaseval(value){
+                var val = parseInt(value.textContent);
+                var pr=val+1;
+                var priceVal=pr*product.price
+                price.textContent="Price: $"+Number(priceVal).toFixed(2);
+                quantity.textContent = pr
+                updateSubtotal();
+                 
+            }
+            quantityDiv.appendChild(increase)
+
+            var quantity = document.createElement('p')
+            quantity.innerHTML = '1'
+            quantityDiv.appendChild(quantity)
+            
+            var decrease=document.createElement("button");
+            decrease.textContent="-";
+            decrease.onclick=function(){
+                decreaseval(quantity);
+               
+            };
+            function decreaseval(value){
+                var val = parseInt(value.textContent);
+                if(val==1){
+                    return ;
+                }else{
+                var pr=val-1;
+                var priceVal=pr*product.price
+                price.textContent="Price: $"+Number(priceVal).toFixed(2);
+                quantity.textContent = pr
+                updateSubtotal();
+                
+               
+                } 
+            }
+            quantityDiv.appendChild(decrease)
+
+            productDiv.appendChild(image)
+            // productDiv.appendChild(imgDiv)
+            productDiv.appendChild(detailDiv)
+            productDiv.appendChild(quantityDiv)
+
+            cartDiv.appendChild(productDiv);
+            count++;
+            sum += product.price;
+        });
+        var countitems = document.getElementById('countitems');
+        countitems.textContent = "("+count+")";
+
+        var showtotal = document.getElementById("showtotal");
+        showtotal.textContent = "$" + sum;
+        // var clearC = document.getElementById("clearCart").addEventListener("click", clearWholeCart);
+        document.getElementById("clearCart").onclick = clearWholeCart;
+
+        function clearWholeCart() {
+            cartDiv.innerHTML = "";
+            updateSubtotal();
+            countitems.innerHTML = "";
+        }
+
+    }
+
+    function giftBoxCheck() {
+        var checkBox = document.getElementById("giftCheck");
+        var text = document.getElementById("freeShippingText");
+        if (checkBox.checked == true){
+            text.textContent = 'YOUR ORDER IS QUALIFIES FOR FREE SHIPPING!';
+        }
+        else{
+            text.textContent = '';
+        }
+    }
+    function updateSubtotal() {
+        var sum = 0;
+        var prices = document.querySelectorAll('.product-container p');
+        prices.forEach(price => {
+            var priceVal = parseFloat(price.textContent);
+            sum += priceVal;
+        });
+
+        var showtotal = document.getElementById("showtotal");
+        showtotal.textContent = "$ " + Number(sum).toFixed(2);
+    }
+// --------------------------------------------
+    getProductData();   
+
+</script>
