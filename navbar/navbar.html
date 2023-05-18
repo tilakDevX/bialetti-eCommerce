@@ -32,27 +32,30 @@
                                 <i class="fa fa-caret-down"></i>
                               </button>
                               <div class="dropdown-content">
-                                <div class="header">
-                                  <h2>Mega Menu</h2>
-                                </div>
                                 <div class="row">
                                   <div class="column">
-                                    <h3>Category 1</h3>
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                    
+                                    <h3 class="column-h3">COFFEE</h3>
+                                    <a href="#">Grounds</a>
+                                    <a href="#">Coffee beans</a>
                                   </div>
                                   <div class="column">
-                                    <h3>Category 2</h3>
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                    <div class="vl"></div>
+                                    <h3 class="column-h3">COFFEE MAKERS</h3>
+                                    <a href="#">Aluminium coffee makers</a>
+                                    <a href="#">Stainless steal coffee makers</a>
+                                    <a href="#">Special coffee makers</a>
                                   </div>
                                   <div class="column">
-                                    <h3>Category 3</h3>
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                    <div class="vl"></div>
+                                    <h3 class="column-h3">ACCESSORIES</h3>
+                                    <a href="#">Small cups and mugs</a>
+                                    <a href="#">Coffee accessories</a>
+                                    <a href="#">Spare Parts</a>
+                                  </div>
+                                  <div class="column">
+                                    <div class="vl"></div>
+                                    <img class="column-img" src="https://www.bialetti.com/media/wysiwyg/moka-express-menu.jpg" alt="Coffee">
                                   </div>
                                 </div>
                               </div>
@@ -62,9 +65,10 @@
                                 <i class="fa fa-caret-down"></i>
                               </button>
                               <div class="dropdown-content-2">
-                                <div class="header">
-                                  <h2>Mega Menu</h2>
-                                </div>
+                                <div class="column-2">
+                                    <a href="#">Small cups and mugs</a>
+                                    <a href="#">Coffee accessories</a>
+                                  </div>
                                 
                               </div>
                         </div>
@@ -111,6 +115,7 @@
                 <form id='login' class='input-group-login'>
                     <input type='text'class='input-field' id='login-email' placeholder='Email Id' required >
 		    <input type='password'class='input-field' id='login-pass' placeholder='Enter Password' required>
+            <span class='input-field-2' id="password-error" style="display:none;color:red;">Email and/or password incorrect.</span>
 		    <input type='checkbox'class='check-box'><span>Remember Password</span>
 		    <button type='submit'class='submit-btn'>Log in</button>
 		 </form>
@@ -120,7 +125,8 @@
 		     <input type='email'id="regisemail"  class='input-field'placeholder='Email Id' required>
 		     <input type='password' id="resipass" class='input-field'placeholder='Enter Password' required>
 		     <input type='password' id="resirepass" class='input-field'placeholder='Confirm Password'  required>
-		     <input type='checkbox'class='check-box' required><span>I agree to the terms and                                                   conditions</span>
+		     <input type='checkbox'class='check-box' required><span>I agree to the terms and conditions</span>
+             <span id="email-exists" class='input-field-2' style="display:none;"></span>
                     <button type='submit'class='submit-btn'>Register</button>
 	         </form>
             </div>
