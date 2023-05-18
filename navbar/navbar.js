@@ -108,13 +108,19 @@ magni.addEventListener("click", displaysearch);
 
 function displaysearch(){
     const searchbar = document.getElementById("search")
-    if(searchbar.style.display ="none"){
+    if(searchbar.style.display ===""){
         searchbar.style.display = "block";
+        
     }
-    else if(searchbar.style.display ="block"){
+    else if(searchbar.style.display ==="block"){
         searchbar.style.display = "none";
+       
     }
-   
+    else if(searchbar.style.display ==="none"){
+        searchbar.style.display = "block";
+        
+    }
+    console.log(3);
 }
 
 
