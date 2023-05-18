@@ -1,0 +1,50 @@
+#product_details{
+    display: flex;
+}
+
+#img_container{
+    width: 20%;
+    
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+ 
+#img_show{
+    width: 40%;
+}
+.img_box li{
+    list-style: none;
+    text-decoration: none;
+
+}
+
+.img_box li img{
+    border: 1.2px solid black;
+    cursor: pointer;
+    width:20%;
+    
+    
+}
+ 
+
+ul img{
+    width: 70%;
+}
+
+#about_product{
+    width: 40%;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-evenly;
+}
+#bottom_container{
+    display: flex;
+}
+.btn1, .btn2{
+    cursor: pointer;
+}

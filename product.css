@@ -18,8 +18,8 @@
     margin-left: 2rem;
     /* font-family: "Mostra Nuova"; */
     font-style: normal;
-    font-weight: normal;
-    font-size: 21px;
+    font-weight: 500    ;
+    font-size: 18px;
     line-height: 22px;
 }
 #right_container{
@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-around;
 }
-.category ul, .cups ul, .line ul, .roasting ul{
+.category ul, .cups ul, .line ul, .roasting ul, .body ul, .flavor ul{
     list-style: none;
 }
 li:first-child{
@@ -42,12 +42,15 @@ li:first-child{
     letter-spacing: normal;
     line-height: 19.9px;
 }
-.category ul li a, .cups ul li a, .line ul li a, .roasting ul li a{
+.category ul li a, .cups ul li a, .line ul li a, .roasting ul li a, .body ul li a, .flavor ul li a{
     text-decoration: none;
     color: black;
 }
- .cups, .line , .roasting  {
-    margin-top: 10px ;
+.category ul li a:hover, .cups ul li a:hover, .line ul li a:hover, .roasting ul li a:hover, .body ul li a:hover, .flavor ul li a:hover{
+    color:red;
+}
+ .cups, .line , .roasting , .body, .flavor {
+    margin-top: 25px ;
 }
 
 
