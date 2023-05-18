@@ -1,7 +1,7 @@
 async function apiRequest(page) {
 
     try {
-        let res = await fetch(`https://bialettiserver.onrender.com/products?_limit=4&_page=${page}`)
+        let res = await fetch(`https://bialettiserver.onrender.com/products?_limit=6&_page=${page}`)
         let mData = await res.json();
 
         // console.log(mData)
@@ -69,9 +69,11 @@ function showCoffee(data){
         a.setAttribute("href", "#")
 
         let price = document.createElement("p")
-        price.textContent = "price "+ element.price +"$";
+        price.setAttribute("class", "price")
+        price.textContent = "Price "+ element.price +"$";
         let name = document.createElement("a")
         name.href = "#"
+        name.setAttribute("class", "product-name")
 
         name.addEventListener("click",function(){
 
@@ -95,18 +97,21 @@ function showCoffee(data){
     let btn1 = document.createElement("button")
     let btn2 = document.createElement("button")
     let btn3 = document.createElement("button")
+    let btn4 = document.createElement("button")
     
 
     btn1.textContent = "1"
     btn2.textContent = "2"
     btn3.textContent = "3"
+    btn4.textContent = " > "
     
 
     btn1.setAttribute("class", "pagination_btn")
     btn2.setAttribute("class", "pagination_btn")
     btn3.setAttribute("class", "pagination_btn")
+    btn4.setAttribute("class", "pagination_btn")
 
-    paginationBtns.append(btn1, btn2, btn3 )
+    paginationBtns.append(btn1, btn2, btn3, btn4 )
 
     btn1.addEventListener("click", function(){
         apiRequest(1)
