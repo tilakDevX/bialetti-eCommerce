@@ -54,24 +54,24 @@ img {
     
 }
 
+
 .Header-menu{
     font-weight: 500;
 }
-@media (min-width: 1200px)
-{
-    .menu-name {
-        color:black;
-        line-height: 50px;
-        padding: 0 10px;
-        text-decoration: none;
-        box-sizing: border-box;
-        position: relative;
-        display: inline-block;
-        font-family: Mostra Nuova;
-        font-size: 18px;
-        margin: 0;
-    }
+
+.menu-name {
+  color:black;
+  line-height: 50px;
+  padding: 0 10px;
+  text-decoration: none;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  font-family: Mostra Nuova;
+  font-size: 18px;
+  margin: 0;
 }
+
 .icon-container{
     display: flex;
     width: 15%;
@@ -80,15 +80,14 @@ img {
     align-items: center;
 }
 @media screen and (max-width: 1480px){
-  .menu-container{
-    display: none;
-  }
+  
   .Full-header{
     display: flex;
     justify-content: space-between;
+  
   }
   .logo-container{
-    width: 40%;
+    width: 20%;
   }
   .icon-container{
     width: 20%;
@@ -98,14 +97,23 @@ img {
   .icon-container{
     width: 20%;
   }
+  .logo-container{
+    width: 40%;
+  }
 }
 @media screen and (max-width: 700px){
   .icon-container{
-    width: 30%;
+    width: 40%;
+  }
+  .logo-container{
+    width: 40%;
   }
 }
 @media screen and (max-width: 410px){
   .icon-container{
+    width: 40%;
+  }
+  .logo-container{
     width: 40%;
   }
 }
@@ -338,4 +346,19 @@ span
 {
 	color:white;
 	font-size: 15;
+}
+
+@media screen and (max-width: 1482px)
+{
+    .menu-name, .dropdown .dropbtn {
+        
+        font-size: 16px;
+        
+    }
+}
+@media screen and (max-width: 1409px)
+{
+  .menu-container{
+    display: none;
+  }
 }
