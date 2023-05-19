@@ -25,9 +25,24 @@
             flex-direction: row;
             justify-content: space-between;
         }
-        #cartNav > button{
-            width: 10%;
-            margin: 30px;
+        #cartNav > button:first-child {
+            width: 5%;
+            /* margin: 30px; */
+            margin: 16px 5px 25px 15px;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(189, 24, 24);
+            text-decoration-line: none;
+            border-color: white;
+        }
+        #cartNav > button:last-child {
+            width: 65px;
+            margin: 18px 12px 20px 13px;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(189, 24, 24);
+            text-decoration-line: none;
+            border-color: white;
         }
 
         #checkbox>p {
@@ -54,22 +69,22 @@
         #parent>div>button{
             display: block;
             margin: 0 auto;
-            width:60%;
+            width:98%;
             border-radius: 15px;
             padding: 5px;
             justify-content: center;
-            background-color: rgba(105, 4, 4, 0.884);
+            background-color:rgb(189, 24, 24);
             border-color: rgb(134, 133, 133);
         }
 
-        img{
-            width:30%;
-        }
         #cartDiv{
             display: flex;
             flex-direction: column;
             margin: 20px 10px 5px 10px;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        #cartDiv > img{
+            width:30%;
         }
        
         .product-container {
@@ -96,15 +111,56 @@
             flex-direction: column;
             text-align: center;
         }
-        .product-container > div:last-child > button {
+        .product-container > div:last-child > button:first-child {
             width: 10%;
             padding-left: 15px;
             padding-right: 15px;
             margin: auto;
             text-align:center;
-            background-color:red;
+            background-color:rgb(189, 24, 24);
             color:white;
             font-weight: bold;
+        }
+        .product-container > div:last-child > button:last-child {
+            width: 10%;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: auto;
+            text-align:center;
+            background-color:black;
+            color:white;
+            font-weight: bold;
+        }
+        #checkout {
+            width:98%;
+            display: flex;
+            margin:auto;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            
+        }
+        #checkout > div:first-child{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #checkout > div:first-child > p{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        #checkout > div:last-child{
+            text-align: center;
+        }
+        #checkout > div:last-child > a > button{
+            /* font-weight: bold; */
+            width: 100%;
+            background-color: black;
+            color: rgb(216, 207, 189);
+            padding: 5px;
+            font-size: larger;
+        }
+        #giftCheck{
+            margin: 5px 0 20px 12px
         }
     </style>
 </head>
@@ -124,8 +180,10 @@
             <input type="checkbox" id="giftCheck"  value="gift" onclick="giftBoxCheck()">
             <label for="checkBox"> This order is a gift</label><br>
             <div id="checkout">
-                <p>Subtotal : <span id="showtotal">0</span></p>
-                <a href="paymentPage.html"><button>Checkout</button></a>
+                <div><p>Subtotal : </p>
+                    <p id="showtotal">0</p>
+                </div>
+                <div><a href="paymentPage.html"><button id="checkoutBtn">CHECKOUT</button></a></div>
             </div>
         </div>
     </div>
@@ -152,10 +210,8 @@
             const productDiv = document.createElement('div')
             productDiv.classList.add('product-container');
 
-            // const imgDiv = document.createElement('div');
             const image = document.createElement('img');
             image.src = product.img1;
-            // imgDiv.appendChild(image);
         
             const detailDiv = document.createElement('div')
             const name = document.createElement('h2');
@@ -203,10 +259,8 @@
                 var priceVal=pr*product.price
                 price.textContent="Price: $"+Number(priceVal).toFixed(2);
                 quantity.textContent = pr
-                updateSubtotal();
-                
-               
                 } 
+                updateSubtotal();
             }
             quantityDiv.appendChild(decrease)
 
@@ -244,19 +298,38 @@
         else{
             text.textContent = '';
         }
-    }
+    } 
     function updateSubtotal() {
         var sum = 0;
         var prices = document.querySelectorAll('.product-container p');
         prices.forEach(price => {
-            var priceVal = parseFloat(price.textContent);
+            var priceText = price.textContent;
+            var priceVal = parseFloat(priceText.substring(priceText.indexOf('$') + 1));
             sum += priceVal;
+
         });
 
-        var showtotal = document.getElementById("showtotal");
-        showtotal.textContent = "$ " + Number(sum).toFixed(2);
+        var showTotalElement = document.querySelector("#showtotal");
+        showTotalElement.textContent = "$ "+sum.toFixed(2);
+
+        // Store the subtotal value in localStorage
+        var setSubtotal = localStorage.setItem("subtotal", sum.toFixed(2));
+        console.log(setSubtotal);
     }
-// --------------------------------------------
-    getProductData();   
+
+    getProductData();
+
+    // var total = document.getElementById("subtotal").textContent;
+    // var subtotal = parseFloat(total.substring(total.indexOf('$') + 1));
+    // localStorage.setItem("subtotal", subtotal )
+    // console.log("subtotal value save");
+
+    document.getElementById("checkoutBtn").addEventListener("click", redirectPayment);
+    
+    function redirectPayment() {
+        var setSubtotal = localStorage.setItem("subtotal", sum.toFixed(2));
+        console.log(setSubtotal);
+    }
+    //  document.getElementById("checkoutBtn").addEventListener("click", redirectPayment);
 
 </script>

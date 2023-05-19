@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo page</title>
+    
+    <style>
+        #parent {
+           width: 70%;
+           margin: 40px auto;
+       }
+
+      
+
+       #parent>div>h1{
+           text-align: center;
+       }
+       #parent>div>h4{
+           text-align: center;
+       }
+       
+       #parent>div>button{
+           display: block;
+           margin: 0 auto;
+           width:98%;
+           border-radius: 15px;
+           padding: 5px;
+           justify-content: center;
+           background-color:rgb(189, 24, 24);
+           border-color: rgb(134, 133, 133);
+       }
+
+       #cartDiv{
+           display: flex;
+           flex-direction: column;
+           margin: 20px 10px 5px 10px;
+           box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+       }
+       #cartDiv > img{
+           width:30%;
+       }
+      
+       .product-container {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 0px 10px 0 10px;
+           margin: 5px;
+           box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+       }
+
+       .product-container > div:first-child{
+           display: flex;
+           flex-direction: column;
+           margin-right:2px;
+       }
+       .product-container > img{
+           width:30%;
+       }
+
+       .product-container > div:last-child {
+           margin-left: auto;
+           display: flex;
+           flex-direction: column;
+           text-align: center;
+       }
+       .product-container > div:last-child > button:first-child {
+           width: 10%;
+           padding-left: 15px;
+           padding-right: 15px;
+           margin: auto;
+           text-align:center;
+           background-color:rgb(189, 24, 24);
+           color:white;
+           font-weight: bold;
+       }
+       .product-container > div:last-child > button:last-child {
+           width: 10%;
+           padding-left: 15px;
+           padding-right: 15px;
+           margin: auto;
+           text-align:center;
+           background-color:black;
+           color:white;
+           font-weight: bold;
+       }
+       #checkout {
+           width:98%;
+           display: flex;
+           margin:auto;
+           flex-direction: column;
+           box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+           
+       }
+       #checkout > div:first-child{
+           display: flex;
+           flex-direction: row;
+           justify-content: space-between;
+       }
+       #checkout > div:first-child > p{
+           margin-left: 10px;
+           margin-right: 10px;
+       }
+       #checkout > div:last-child{
+           text-align: center;
+       }
+       #checkout > div:last-child > a > button{
+           /* font-weight: bold; */
+           width: 100%;
+           background-color: black;
+           color: rgb(216, 207, 189);
+           padding: 5px;
+           font-size: larger;
+       }
+       #giftCheck{
+           margin: 5px 0 20px 12px
+       }
+   </style>
+</head>
+<body>
+    <div id="parent">
+        <div>
+            <div id="cartNav">
+                <button><</button>
+                <h1>MY CART<span id="countitems"></span></h1>
+                <button id="clearCart">Clear cart </button>
+            </div>
+            <h4 id="freeShippingText"></h4>
+            <button id="just_for_design"></button>
+            <div id="cartDiv"></div>
+            <input type="checkbox" id="giftCheck" value="gift" onclick="giftBoxCheck()">
+            <label for="checkBox">This order is a gift</label><br>
+            <div id="checkout">
+                <div>
+                    <p>Subtotal : </p>
+                    <p id="showtotal">0</p>
+                </div>
+                <div>
+                    <a href="paymentPage.html"><button>CHECKOUT</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cartDiv = document.querySelector("#cartDiv");
+
+        const getProductData = async () => {
+            try {
+                const res = await fetch("https://bialettiserver.onrender.com/products");
+                const data = await res.json();
+                displayProductData(data);
+            } catch (err) {
+                console.log("Error: fetching product data");
+            }
+        };
+
+        const displayProductData = (data) => {
+            var count = 0;
+            var subtotal = 0;
+
+            data.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.classList.add('product-container');
+
+                const image = document.createElement('img');
+                image.src = product.img1;
+
+                const detailDiv = document.createElement('div');
+                const name = document.createElement('h2');
+                name.textContent = product.product_name;
+                detailDiv.appendChild(name);
+
+                const price = document.createElement('p');
+                const quantity = document.createElement('p');
+                quantity.innerHTML = '1';
+                price.textContent = `Price: $${product.price.toFixed(2)}`;
+                detailDiv.appendChild(price);
+
+                const quantityDiv = document.createElement('div');
+
+                var increase = document.createElement("button");
+                increase.textContent = "+";
+                increase.onclick = function () {
+                    increaseval(quantity, product.price);
+                };
+
+                function increaseval(value, price) {
+                    var val = parseInt(value.textContent);
+                    var pr = val + 1;
+                    var priceVal = pr * price;
+                    price.textContent = `Price: $${priceVal.toFixed(2)}`;
+                    value.textContent = pr;
+
+                    updateSubtotal();
+                }
+
+                quantityDiv.appendChild(increase);
+
+                var decrease = document.createElement("button");
+                decrease.textContent = "-";
+                decrease.onclick = function () {
+                    decreaseval(quantity, product.price);
+                };
+
+                function decreaseval(value, price) {
+                    var val = parseInt(value.textContent);
+                    if (val == 1) {
+                        return;
+                    } else {
+                        var pr = val - 1;
+                        var priceVal = pr * price;
+                        price.textContent = `Price: $${priceVal.toFixed(2)}`;
+                        value.textContent = pr;
+
+                        updateSubtotal();
+                    }
+                }
+
+                quantityDiv.appendChild(decrease);
+
+                productDiv.appendChild(image);
+                productDiv.appendChild(detailDiv);
+                productDiv.appendChild(quantityDiv);
+
+                cartDiv.appendChild(productDiv);
+
+                subtotal += product.price;
+                count++;
+            });
+
+            updateSubtotal();
+
+            function updateSubtotal() {
+                const showTotalElement = document.querySelector("#showtotal");
+                var total = 0;
+
+                const priceElements = document.querySelectorAll(".product-container p:nth-child(2)");
+                priceElements.forEach((priceElement) => {
+                    const price = parseFloat(priceElement.textContent.substr(8));
+                    total += price;
+                });
+
+                showTotalElement.textContent = total.toFixed(2);
+            }
+        }
+
+        getProductData();
+    </script>
+</body>
+</html>
