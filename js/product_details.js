@@ -146,10 +146,23 @@ let bottom_container = document.getElementById("bottom_container")
         btn1.setAttribute("class", "btn1")
         btn1.textContent = "Buy Now"
 
+        btn1.addEventListener("click", function(){
+            localStorage.setItem("buyId", element.id)
+            location.href = "paymentPage.html"
+        })
+
         let btn2 = document.createElement("button")
         btn2.setAttribute("class", "btn2")
 
         btn2.textContent = "Add To Cart"
+        btn2.addEventListener("click", function(){
+            let cartId = element.id;
+
+            localStorage.setItem("cartId", cartId);
+            // console.log(cartId)
+            location.href = "./cartpage.html"
+
+        })
 
         btns.append(btn1, btn2)
 

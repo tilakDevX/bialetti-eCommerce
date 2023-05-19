@@ -241,11 +241,15 @@
     }
 
 const paymentOrderDiv = document.querySelector("#orderSummary");
-const getOrderData = async () => {
+
+let id = localStorage.getItem("buyId")
+    getOrderData(id); 
+
+async function getOrderData(id) {
     try {
-        const res = await fetch("https://bialettiserver.onrender.com/products");
+        const res = await fetch(`https://bialettiserver.onrender.com/products?id=${id}`);
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         displayOrderData(data);
     } catch (err) {
         console.log("Error: fetching in order data");
@@ -304,6 +308,6 @@ const downScroll = () => {
 window.upScroll = upScroll;
 window.downScroll = downScroll;
 
-getOrderData();  
+ 
 
 </script>
