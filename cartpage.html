@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cartpage</title>
+    <style>
+        #cart{
+            background-color: #e0d5c5;
+        }
+         #parent {
+            width: 70%;
+            margin: 40px auto;
+            background-color:white;
+            
+        }
+        #checkbox {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        #cartNav{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #cartNav > button:first-child {
+            width: 5%;
+            /* margin: 30px; */
+            margin: 16px 5px 25px 15px;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(189, 24, 24);
+            text-decoration-line: none;
+            border-color: white;
+        }
+        #cartNav > button:last-child {
+            width: 65px;
+            margin: 18px 12px 20px 13px;
+            color: white;
+            font-weight: bold;
+            background-color: rgb(189, 24, 24);
+            text-decoration-line: none;
+            border-color: white;
+        }
+
+        #checkbox>p {
+            color: white;
+            margin: 0;
+        }
+
+        #checkbox>a>button {
+            /* background-color: red; */
+            color: black;
+            border: none;
+            border-radius: 8px;
+            padding: 5px 20px;
+        }
+
+
+        #parent>div>h1{
+            text-align: center;
+        }
+        #parent>div>h4{
+            text-align: center;
+        }
+        
+        #parent>div>button{
+            display: block;
+            margin: 0 auto;
+            width:98%;
+            border-radius: 15px;
+            padding: 5px;
+            justify-content: center;
+            background-color:rgb(189, 24, 24);
+            border-color: rgb(134, 133, 133);
+        }
+
+        #cartDiv{
+            display: flex;
+            flex-direction: column;
+            margin: 20px 10px 5px 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        #cartDiv > img{
+            width:30%;
+        }
+       
+        .product-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 10px 0 10px;
+            margin: 5px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+
+        .product-container > div:first-child{
+            display: flex;
+            flex-direction: column;
+            margin-right:2px;
+        }
+        .product-container > img{
+            width:30%;
+        }
+
+        .product-container > div:last-child {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .product-container > div:last-child > button:first-child {
+            width: 10%;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: auto;
+            text-align:center;
+            background-color:rgb(189, 24, 24);
+            color:white;
+            font-weight: bold;
+        }
+        .product-container > div:last-child > button:last-child {
+            width: 10%;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: auto;
+            text-align:center;
+            background-color:black;
+            color:white;
+            font-weight: bold;
+        }
+        #checkout {
+            width:98%;
+            display: flex;
+            margin:auto;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+            
+        }
+        #checkout > div:first-child{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #checkout > div:first-child > p{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        #checkout > div:last-child{
+            text-align: center;
+        }
+        #checkout > div:last-child > a > button{
+            /* font-weight: bold; */
+            width: 100%;
+            background-color: black;
+            color: rgb(216, 207, 189);
+            padding: 5px;
+            font-size: larger;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        #giftCheck{
+            margin: 5px 0 20px 12px
+        }
+    </style>
+</head>
+<body>
+    <div id="cart">
+    <div id="parent">
+        <div>
+            <div id="cartNav">
+                <button><</button>
+                <h1>MY CART<span id="countitems"></span></h1>
+                <button id="clearCart">Clear cart </button>
+            </div>
+            <h4 id="freeShippingText"></h4>
+            <button id="just_for_design"></button>
+            <div id="cartDiv">
+            
+            </div>
+            <input type="checkbox" id="giftCheck"  value="gift" onclick="giftBoxCheck()">
+            <label for="checkBox"> This order is a gift</label><br>
+            <div id="checkout">
+                <div><p>Subtotal : </p>
+                    <p id="showtotal">0</p>
+                </div>
+                <div><a href="paymentPage.html"><button id="checkoutBtn">CHECKOUT</button></a></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const cartDiv = document.querySelector("#cartDiv");
+    const getProductData = async () => {
+        try {
+            const res = await fetch("https://bialettiserver.onrender.com/products");
+            const data = await res.json();
+            console.log(data);
+            displayProductData(data);
+        } catch (err) {
+            console.log("Error: fetching in product data");
+        }
+    };
+
+    const displayProductData = (data) => {
+        var count=0;
+        var sum=0;
+        data.forEach(product => {
+            if(product.id==1){
+                const productDiv = document.createElement('div')
+                productDiv.classList.add('product-container');
+
+                const image = document.createElement('img');
+                image.src = product.img1;
+            
+                const detailDiv = document.createElement('div')
+                const name = document.createElement('h2');
+                name.textContent = product.product_name;
+                detailDiv.appendChild(name);
+
+                const price = document.createElement('p');
+                price.textContent = `Price: $${product.price}`;
+                detailDiv.appendChild(price);
+
+                
+                const quantityDiv = document.createElement('div')
+                var increase=document.createElement("button");
+                increase.textContent="+";
+                increase.onclick=function(){
+                    increaseval(quantity);
+                };
+                function increaseval(value){
+                    var val = parseInt(value.textContent);
+                    var pr=val+1;
+                    var priceVal=pr*product.price
+                    price.textContent="Price: $"+Number(priceVal).toFixed(2);
+                    quantity.textContent = pr
+                    updateSubtotal();
+                    
+                }
+                quantityDiv.appendChild(increase)
+
+                var quantity = document.createElement('p')
+                quantity.innerHTML = '1'
+                quantityDiv.appendChild(quantity)
+                
+                var decrease=document.createElement("button");
+                decrease.textContent="-";
+                decrease.onclick=function(){
+                    decreaseval(quantity);
+                
+                };
+                function decreaseval(value){
+                    var val = parseInt(value.textContent);
+                    if(val==1){
+                        return ;
+                    }else{
+                    var pr=val-1;
+                    var priceVal=pr*product.price
+                    price.textContent="Price: $"+Number(priceVal).toFixed(2);
+                    quantity.textContent = pr
+                    } 
+                    updateSubtotal();
+                }
+                quantityDiv.appendChild(decrease)
+
+                productDiv.appendChild(image)
+                // productDiv.appendChild(imgDiv)
+                productDiv.appendChild(detailDiv)
+                productDiv.appendChild(quantityDiv)
+
+                cartDiv.appendChild(productDiv);
+                count++;
+                sum += product.price;
+            }
+        });
+        var countitems = document.getElementById('countitems');
+        countitems.textContent = "("+count+")";
+
+        var showtotal = document.getElementById("showtotal");
+        showtotal.textContent = "$" + sum;
+        // var clearC = document.getElementById("clearCart").addEventListener("click", clearWholeCart);
+        document.getElementById("clearCart").onclick = clearWholeCart;
+
+        function clearWholeCart() {
+            cartDiv.innerHTML = "";
+            updateSubtotal();
+            countitems.innerHTML = "";
+        }
+
+    }
+
+    function giftBoxCheck() {
+        var checkBox = document.getElementById("giftCheck");
+        var text = document.getElementById("freeShippingText");
+        if (checkBox.checked == true){
+            text.textContent = 'YOUR ORDER IS QUALIFIES FOR FREE SHIPPING!';
+        }
+        else{
+            text.textContent = '';
+        }
+    } 
+    function updateSubtotal() {
+        var sum = 0;
+        var prices = document.querySelectorAll('.product-container p');
+        prices.forEach(price => {
+            var priceText = price.textContent;
+            var priceVal = parseFloat(priceText.substring(priceText.indexOf('$') + 1));
+            sum += priceVal;
+
+        });
+
+        var showTotalElement = document.querySelector("#showtotal");
+        showTotalElement.textContent = "$ "+sum.toFixed(2);
+
+        // Store the subtotal value in localStorage
+        var setSubtotal = localStorage.setItem("subtotal", sum.toFixed(2));
+        console.log(setSubtotal);
+    }
+
+    getProductData();
+
+    // var total = document.getElementById("subtotal").textContent;
+    // var subtotal = parseFloat(total.substring(total.indexOf('$') + 1));
+    // localStorage.setItem("subtotal", subtotal )
+    // console.log("subtotal value save");
+
+    document.getElementById("checkoutBtn").addEventListener("click", redirectPayment);
+    
+    function redirectPayment() {
+        var setSubtotal = localStorage.setItem("subtotal", sum.toFixed(2));
+        console.log(setSubtotal);
+    }
+    //  document.getElementById("checkoutBtn").addEventListener("click", redirectPayment);
+
+</script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>opt page</title>
+    <style>
+      body {
+        margin: 0;
+        width: 40%;
+        margin: auto;
+        text-align: center;
+        background-image: 'https://www.bialetti.com/media/wysiwyg/torrefazione.png';
+      }
+      #otpDiv {
+        padding: 15px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        margin-top: 70px;
+        text-align: center;
+      }
+      form {
+        text-align: center;
+      }
+      form > input {
+        width: 35%;
+      }
+      #submit {
+        background-color: black;
+        color: white;
+        padding: 5px 12px 5px 12px;
+        border-radius: 3px;
+      }
+
+      #paymentSuccessfull {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+      #paymentSuccessfull > img {
+        width: 60%;
+      }
+      #paymentSuccessfull > h3 {
+        margin-bottom: 5px;
+      }
+      #paymentSuccessfull > p {
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="otpDiv">
+      <h1>Enter OTP</h1>
+      <form id="myform">
+        <label for="otp">OTP:</label>
+        <input type="text" id="otp">
+        <br>
+        <br>
+        <button id="submit" type="submit">Submit</button>
+      </form>
+    </div>
+    <div id="paymentSuccessfull">
+      <img
+        id="image"
+        src="https://user-images.githubusercontent.com/12693087/31615154-9c8c4886-b280-11e7-828d-2f64e4250c53.gif"
+        alt="successful"
+      />
+      <h3>Order Confirmed</h3>
+      <p>Order ID: 546758645454</p>
+    </div>
+  </body>
+  <script>
+    document.getElementById("submit").addEventListener("click", displaySuccess);
+
+    function displaySuccess(event) {
+      event.preventDefault(); 
+
+      var otpDiv = document.getElementById("otpDiv");
+      var paymentSuccessfull = document.getElementById("paymentSuccessfull");
+
+    //   otpDiv.style.display = "none"; // Hide the OTP div
+
+      setTimeout(function() {
+        otpDiv.style.display = "none";
+        paymentSuccessfull.style.display = "flex";
+      }, 3000);
+
+      otpDiv.innerHTML = "<p>Payment Processing...</p>";
+    }
+  </script>
+</html>

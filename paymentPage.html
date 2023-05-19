@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment page</title>
+    <style>
+        
+         #deli_Vol {
+            width: 85%;
+            margin: 70px auto;
+            display: flex;
+            align-items: center;
+            gap: 100px;
+            
+        }
+
+        #deli_Vol>div:first-child {
+            width: 50%;
+            margin-top: -220px;
+    
+        }
+
+        #deli_Vol>div:nth-child(2) {
+            width: 35%;
+            margin-top: -30px;
+        }
+
+        #deliverydetails {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding: 20px;
+        }
+
+        #deliverydetails>div>form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            /* width:50%; */
+        }
+
+        #deliverydetails>div>form > input {
+            width:90%;
+        }
+
+        #app_voch>div>input {
+            width: 93%;
+        }
+
+        #app_voch>div>button {
+            width: 100%;
+        }
+
+        #app_voch>div {
+            display:flex;
+            flex-direction: column;
+            /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            padding: 10px;
+            margin-bottom: 0px;
+            margin-top: -10px;
+        }
+       
+        #app_voch>h2{
+            margin-top: 30px;
+        }
+
+        #app_voch>div>input{
+            padding:10px;
+        } 
+        #app_voch>div>button {
+            padding: 5px;
+            width:100%;
+            background-color: black;
+            color: rgb(216, 207, 189);
+        }
+        #order_sum {
+            /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;  */
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            display: flex;
+            gap:5px;
+        }
+        #order_sum>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #btninp {
+            width: 100%;
+            background-color: black;
+            color: rgb(216, 207, 189);
+            padding: 5px;
+            font-size: larger;
+            /* border-radius: 8px; */
+            margin-top: 15px 0px;
+            margin: 20px -5px 5px -5px;
+        }
+        img {
+            width:30%;
+            
+        }
+        #orderSummary{
+        display:flex;
+        flex-direction: column;
+        width:100%;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        max-height: 400px; /* Set the desired maximum height for vertical scrolling */
+        }
+        #orderSummary>div{
+            display: flex;
+            flex-direction: row;
+        }
+        #orderSummary>div>div{
+            display:flex;
+            flex-direction: column;
+        }
+        #orderSummaryBox{
+            display:flex;
+            flex-direction: column;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+        #orderSummaryBox>div{
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding:10px;
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
+        }
+
+    </style>
+</head>
+<body>
+  <div id="deli_Vol">
+    <div id="deliverydetails">
+        <!-- <h2>Customer</h2> -->
+        <div>
+            <form id="payment-form">
+                <h2>CUSTOMER</h2>
+                <br/>
+                <input type="text" placeholder="Full Name" id="fullname">
+                <input type="text" placeholder="Mobile Number" id="mobile">
+
+                <h2>SHIPPING ADDRESS</h2>
+                <br/>
+                <input type="text" placeholder="Area" id="area">
+                <input type="text" placeholder="City" id="city">
+                <input type="text" placeholder="State" id="state">
+                <input type="number" placeholder="PinCode" id="pincode">
+
+                <h2>PAYMENT DETAILS</h2>
+                <br/>
+                <input type="number" placeholder="Card Number" id="card-number">
+                <input type="text" placeholder="Card Holder Name" id="name">
+                <input type="number" placeholder="CVV" id="cvv" required>
+                <input type="text" placeholder="01/29" id="expiry-date">
+            </form>
+            <br/>
+            <button type="submit" id="btninp" form="payment-form">PLACE ORDER</button>
+        </div>
+    </div>
+    <div id="app_voch">
+        <div>
+            <input type="text" placeholder="Gift card or discount code" id="promocode">
+            <br/>
+            <button onclick="applypromo()">APPLY</button>
+        </div>
+
+        <h2>ORDER SUMMARY</h2>
+        <div id="order_sum">
+            <div id="orderSummary"></div>
+            <div id='orderSummaryBox'>
+                <div>
+                    <p>Subtotal</p>
+                    <p id="subtotal">0</p>
+                </div>
+                <div>
+                    <p>Discount</p>
+                    <p class="after_promo_code_apply">0</p>
+                </div>
+                <div>
+                    <p>Shipping</p>
+                    <p id="shipping_chage_fix_to_5$">FREE</p>
+                </div>
+                <div>
+                    <p style="font-weight: bold;">Order Total</p>
+                    <p id="total_order_price">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div> 
+</body>
+</html>
+
+<script> 
+
+    // var totalcartprice = parseInt(50);
+
+    var totalcartprice = localStorage.getItem("subtotal");
+    var subtotal = document.getElementById("subtotal");
+    subtotal.textContent = "$"+ totalcartprice;
+
+    console.log(subtotal)
+
+    var form = document.getElementById("payment-form");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var fullname = document.getElementById("fullname").value;
+        var mobile = document.getElementById("mobile").value;
+        var area = document.getElementById("area").value;
+        var city = document.getElementById("city").value;
+        var state = document.getElementById("state").value;
+        var pincode = document.getElementById("pincode").value;
+
+        if (fullname === "" || mobile == "" || area === "" || city === "" || state === "" || pincode === "") {
+            alert("Fill all input fields");
+            return false;
+        }
+
+        var cardNumber = document.getElementById("card-number").value;
+        var cvv = document.getElementById("cvv").value;
+        var expiryDate = document.getElementById("expiry-date").value;
+        var name = document.getElementById("name").value;
+
+        window.location.href = "paymentOtp.html";
+        return true;
+    });
+
+    function applypromo() {
+        var promocodeinput = document.getElementById("promocode").value;
+        var disc = 0;
+        if (promocodeinput === "masai30") {
+            disc = parseInt((totalcartprice * 30)/100);
+        }
+        document.querySelector(".after_promo_code_apply").textContent = "$ "+disc.toFixed(2);
+
+        var totalorderprice = parseInt(totalcartprice - disc);
+        document.getElementById("total_order_price").textContent = "$ " + totalorderprice.toFixed(2);
+    }
+
+const paymentOrderDiv = document.querySelector("#orderSummary");
+const getOrderData = async () => {
+    try {
+        const res = await fetch("https://bialettiserver.onrender.com/products");
+        const data = await res.json();
+        console.log(data);
+        displayOrderData(data);
+    } catch (err) {
+        console.log("Error: fetching in order data");
+    }
+};
+
+const displayOrderData = (data) => {
+    var count=0;
+    var sum=0;
+    data.forEach(product => {
+        if(product.id === 1){
+            const orderDiv = document.createElement('div')
+            orderDiv.classList.add('order-container');
+
+            const image = document.createElement('img');
+            image.src = product.img1;
+        
+            const detailDiv = document.createElement('div')
+            const name = document.createElement('h2');
+            name.textContent = product.product_name;
+            detailDiv.appendChild(name);
+
+            const price = document.createElement('p');
+            price.textContent = `Price: $${product.price}`;
+            detailDiv.appendChild(price);
+
+            orderDiv.appendChild(image)
+            orderDiv.appendChild(detailDiv)
+
+            paymentOrderDiv.appendChild(orderDiv);
+        }
+    });
+    
+}
+    // Sliding Picture Function
+const orderSummary = document.querySelector("#orderSummary");
+
+const leftScroll = () => {
+    orderSummary.scrollBy(-200, 0);
+}
+
+const rightScroll = () => {
+    orderSummary.scrollBy(200, 0);
+}
+
+const upScroll = () => {
+    orderSummary.scrollBy(0, -200);
+}
+
+const downScroll = () => {
+    orderSummary.scrollBy(0, 200);
+}
+
+// window.leftScroll = leftScroll;
+// window.rightScroll = rightScroll;
+window.upScroll = upScroll;
+window.downScroll = downScroll;
+
+getOrderData();  
+
+</script>
