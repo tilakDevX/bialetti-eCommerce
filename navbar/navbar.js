@@ -1,3 +1,6 @@
+import navbar  from "./components/navbarimp.js";
+document.querySelector("body").innerHTML = navbar()
+
 var x=document.getElementById('login');
 var y=document.getElementById('register');
 var z=document.getElementById('btn');
@@ -104,6 +107,8 @@ dataArr.map(function(ele){
 }
 
 const magni = document.getElementById("magniglass");
+
+
 magni.addEventListener("click", displaysearch);
 
 function displaysearch(){
@@ -124,11 +129,16 @@ function displaysearch(){
 }
 
 
+document.getElementById("open").addEventListener("click", w3_open);
+document.getElementById("closebtn").addEventListener("click", w3_close);
+
 function w3_open() {
     document.getElementById("mySidebar").style.display = "flex";
+    console.log("11")
   }
   
   function w3_close() {
     document.getElementById("mySidebar").style.display = "none";
   }
+
 
