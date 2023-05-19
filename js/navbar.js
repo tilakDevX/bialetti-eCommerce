@@ -1,5 +1,4 @@
-import navbar  from "./components/navbarimp.js";
-document.querySelector("body").innerHTML = navbar()
+
 
 var x=document.getElementById('login');
 var y=document.getElementById('register');

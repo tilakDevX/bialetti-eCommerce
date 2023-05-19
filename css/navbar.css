@@ -13,8 +13,8 @@ body{
 }
 .Full-header{
     display: flex;
-    padding: 3px 40px;
-    overflow: hidden;
+    /* padding: 3px 40px; */
+    /* overflow: hidden; */
     height: 90px;
     background-color: white;
     
@@ -128,7 +128,7 @@ img {
 }
 .fa-bars{
     font-size: 30px;
-    font-weight: lighter;
+    /* font-weight: lighter; */
 }
 .dropdown {
     float: left;

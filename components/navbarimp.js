@@ -5,7 +5,7 @@ function navbar(){
                 <div class="Full-header">
                     <div class="logo-container">
                         <div class="logo-container-box">
-                            <a class="logo" href="#">
+                            <a class="logo" href="index.html">
                                 <img src="https://www.bialetti.com/media/logo/default/5-layers_3x.png" alt="Bialetti">
                             </a>
                         </div>
@@ -18,9 +18,11 @@ function navbar(){
                             <a class="menu-name" href="#">BIALETTI COFFEE ROASTING</a>
                         </div>
                         <div class="Header-menu dropdown">
+                        <a href="./product.html">
                             <button class="dropbtn">PRODUCTS
                                 <i class="fa-solid fa-angle-down"></i>
-                              </button>
+                            </button>
+                        </a>
                               <div class="dropdown-content">
                                 <div class="row">
                                   <div class="column">
@@ -124,11 +126,7 @@ function navbar(){
             </div>
         </div>
     </div>
-        <div id="test">
-            <div class="test2">
-                <sint>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, <br>sint sed molestiae reiciendis repellat id sit.<br> Dignissimos architecto asperiores aliquam dolores odio vitae rem facilis,<br> nisi quia commodi quidem amet.</p>
-            </div>
-        </div>
+        
         <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" id="mySidebar">
             <button id="closebtn" class="w3-bar-item w3-button w3-large w3-hide-large" >
                 <i class="fa-solid fa-xmark"></i>
