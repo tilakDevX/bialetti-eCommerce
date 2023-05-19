@@ -155,9 +155,20 @@ let bottom_container = document.getElementById("bottom_container")
 
         // video container
 
-        let useBtn = document.createElement("button")
-        useBtn.textContent = "How To Use"
-    if(element.video != ""){
+        let useBtns = document.createElement("div")
+        useBtns.setAttribute("class","useBtns")
+
+        let useBtn1 = document.createElement("button")
+        useBtn1.textContent = "HOW TO USE"
+        useBtn1.setAttribute("class", "useBtn1")
+        
+        let useBtn2 = document.createElement("button")
+        useBtn2.textContent = "TECHNICAL FEATURES"
+        useBtn2.setAttribute("class", "useBtn2")
+
+        useBtns.append(useBtn1, useBtn2)
+
+        if(element.video != ""){
 
         const video = document.createElement('video');
         video.className = 'full-width';
@@ -175,13 +186,13 @@ let bottom_container = document.getElementById("bottom_container")
         video.appendChild(source);
 
 
-        video_container.append(video,useBtn)
+        video_container.append(video,useBtns)
     }else{
         let p = document.createElement("p")
 
         p.textContent = element.use
 
-        video_container.append(p, useBtn)
+        video_container.append(p, useBtns)
     }
 
 
