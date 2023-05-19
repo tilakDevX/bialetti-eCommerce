@@ -79,28 +79,28 @@ let bottom_container = document.getElementById("bottom_container")
          
         
         li5.addEventListener("click", function(){
-            console.log("working")
+            // console.log("working")
             ulImg1.src = element.img4;
             img_show.append(ul1)
 
 
         })
         li4.addEventListener("click", function(){
-            console.log("working")
+            // console.log("working")
             ulImg1.src = element.img3;
 
         })
         
         li3.addEventListener("click", function(){
             ulImg1.src = element.img2;
-            console.log("working")
+            // console.log("working")
             img_show.append(ul1)
 
 
         })
         
         liImg2.addEventListener("click", function(){
-            console.log("LI2")
+            // console.log("LI2")
             ulImg1.src = element.img1;
 
 
@@ -192,7 +192,8 @@ let bottom_container = document.getElementById("bottom_container")
 
         p.textContent = element.use
 
-        video_container.append(p, useBtns)
+        // useBtns.append(p)
+        video_container.append( useBtns)
     }
 
 

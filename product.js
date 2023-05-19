@@ -40,6 +40,7 @@ function showCoffee(data){
             if(element.id<5){
 
                 localStorage.setItem("id", element.id)
+                window.location.href = "product_details.html"
             }else{
                 alert("details not available")
             }
