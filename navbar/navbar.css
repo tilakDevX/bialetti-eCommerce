@@ -411,3 +411,40 @@ span
   width: 350px;
   z-index: 50;
 }
+#mySidebar{
+  display: none;
+  position: absolute;
+  flex-direction: column;
+  right: 0%;
+  top: 0%;
+  z-index: 500;
+  background-color: red;
+  height: 100%;
+  padding: 40px;
+  align-items: start;
+  width: 450px;
+  
+}
+#closebtn{
+  background: none;
+  border: none;
+  float: left;
+  cursor: pointer;
+  font-size: 35px;
+  font-weight: lighter;
+  margin-left: 50px;
+  margin-top: 30px;
+}
+#mySidebar a{
+  margin-left: 40px;
+  padding: 10px;
+}
+#mySidebar #sidebar-1a{
+  margin-top: 50px;
+}
+.fa-xmark{
+  font-size: 40px;
+  font-weight: light;
+  color: grey;
+  
+}
