@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>payment page</title>
     <style>
+        
          #deli_Vol {
             width: 85%;
             margin: 70px auto;
             display: flex;
             align-items: center;
             gap: 100px;
+            
         }
 
         #deli_Vol>div:first-child {
@@ -254,7 +256,7 @@ const displayOrderData = (data) => {
     var count=0;
     var sum=0;
     data.forEach(product => {
-        // if(product.id === 1){
+        if(product.id === 1){
             const orderDiv = document.createElement('div')
             orderDiv.classList.add('order-container');
 
@@ -274,7 +276,7 @@ const displayOrderData = (data) => {
             orderDiv.appendChild(detailDiv)
 
             paymentOrderDiv.appendChild(orderDiv);
-        // }
+        }
     });
     
 }

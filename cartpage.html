@@ -6,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cartpage</title>
     <style>
+        #cart{
+            background-color: #e0d5c5;
+        }
          #parent {
             width: 70%;
             margin: 40px auto;
+            background-color:white;
+            
         }
-
         #checkbox {
             display: flex;
             flex-direction: row;
@@ -158,6 +162,8 @@
             color: rgb(216, 207, 189);
             padding: 5px;
             font-size: larger;
+            width: 100%;
+            margin-bottom: 10px;
         }
         #giftCheck{
             margin: 5px 0 20px 12px
@@ -165,6 +171,7 @@
     </style>
 </head>
 <body>
+    <div id="cart">
     <div id="parent">
         <div>
             <div id="cartNav">
@@ -187,6 +194,7 @@
             </div>
         </div>
     </div>
+    </div>
 </body>
 </html>
 
@@ -207,71 +215,73 @@
         var count=0;
         var sum=0;
         data.forEach(product => {
-            const productDiv = document.createElement('div')
-            productDiv.classList.add('product-container');
+            if(product.id==1){
+                const productDiv = document.createElement('div')
+                productDiv.classList.add('product-container');
 
-            const image = document.createElement('img');
-            image.src = product.img1;
-        
-            const detailDiv = document.createElement('div')
-            const name = document.createElement('h2');
-            name.textContent = product.product_name;
-            detailDiv.appendChild(name);
-
-            const price = document.createElement('p');
-            price.textContent = `Price: $${product.price}`;
-            detailDiv.appendChild(price);
-
+                const image = document.createElement('img');
+                image.src = product.img1;
             
-            const quantityDiv = document.createElement('div')
-            var increase=document.createElement("button");
-            increase.textContent="+";
-            increase.onclick=function(){
-                increaseval(quantity);
-            };
-            function increaseval(value){
-                var val = parseInt(value.textContent);
-                var pr=val+1;
-                var priceVal=pr*product.price
-                price.textContent="Price: $"+Number(priceVal).toFixed(2);
-                quantity.textContent = pr
-                updateSubtotal();
-                 
+                const detailDiv = document.createElement('div')
+                const name = document.createElement('h2');
+                name.textContent = product.product_name;
+                detailDiv.appendChild(name);
+
+                const price = document.createElement('p');
+                price.textContent = `Price: $${product.price}`;
+                detailDiv.appendChild(price);
+
+                
+                const quantityDiv = document.createElement('div')
+                var increase=document.createElement("button");
+                increase.textContent="+";
+                increase.onclick=function(){
+                    increaseval(quantity);
+                };
+                function increaseval(value){
+                    var val = parseInt(value.textContent);
+                    var pr=val+1;
+                    var priceVal=pr*product.price
+                    price.textContent="Price: $"+Number(priceVal).toFixed(2);
+                    quantity.textContent = pr
+                    updateSubtotal();
+                    
+                }
+                quantityDiv.appendChild(increase)
+
+                var quantity = document.createElement('p')
+                quantity.innerHTML = '1'
+                quantityDiv.appendChild(quantity)
+                
+                var decrease=document.createElement("button");
+                decrease.textContent="-";
+                decrease.onclick=function(){
+                    decreaseval(quantity);
+                
+                };
+                function decreaseval(value){
+                    var val = parseInt(value.textContent);
+                    if(val==1){
+                        return ;
+                    }else{
+                    var pr=val-1;
+                    var priceVal=pr*product.price
+                    price.textContent="Price: $"+Number(priceVal).toFixed(2);
+                    quantity.textContent = pr
+                    } 
+                    updateSubtotal();
+                }
+                quantityDiv.appendChild(decrease)
+
+                productDiv.appendChild(image)
+                // productDiv.appendChild(imgDiv)
+                productDiv.appendChild(detailDiv)
+                productDiv.appendChild(quantityDiv)
+
+                cartDiv.appendChild(productDiv);
+                count++;
+                sum += product.price;
             }
-            quantityDiv.appendChild(increase)
-
-            var quantity = document.createElement('p')
-            quantity.innerHTML = '1'
-            quantityDiv.appendChild(quantity)
-            
-            var decrease=document.createElement("button");
-            decrease.textContent="-";
-            decrease.onclick=function(){
-                decreaseval(quantity);
-               
-            };
-            function decreaseval(value){
-                var val = parseInt(value.textContent);
-                if(val==1){
-                    return ;
-                }else{
-                var pr=val-1;
-                var priceVal=pr*product.price
-                price.textContent="Price: $"+Number(priceVal).toFixed(2);
-                quantity.textContent = pr
-                } 
-                updateSubtotal();
-            }
-            quantityDiv.appendChild(decrease)
-
-            productDiv.appendChild(image)
-            // productDiv.appendChild(imgDiv)
-            productDiv.appendChild(detailDiv)
-            productDiv.appendChild(quantityDiv)
-
-            cartDiv.appendChild(productDiv);
-            count++;
-            sum += product.price;
         });
         var countitems = document.getElementById('countitems');
         countitems.textContent = "("+count+")";
