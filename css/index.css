@@ -171,7 +171,7 @@ img {
 }
 .banner-container {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .banner-container::after {
@@ -238,6 +238,7 @@ img {
   text-align: center;
   font-size: 35px;
   text-decoration: #000;
+  padding-bottom: 50px;
 
 }
 
@@ -250,7 +251,7 @@ a:hover {
 }
 .banner-container-2 {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
 .banner-container-2::after {

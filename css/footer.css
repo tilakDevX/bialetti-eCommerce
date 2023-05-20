@@ -15,6 +15,7 @@ footer{
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: space-around;
+    padding-top: 60px;
 
 }
   .contact{
@@ -70,7 +71,7 @@ h4 a:hover,.legal ul li a:hover {
     padding: 15px;
     font-size: 19px;
     border-radius: 25px;
-    background: black;
+    background: #220E08;;
     color: white;
     padding-right: 40px;
     padding-left: 40px;
@@ -82,14 +83,17 @@ h4 a:hover,.legal ul li a:hover {
 .footer-bottom{
     display: flex;
     align-items: center;
+    justify-content: center;
+
+    margin-left: 10%;
 }
 #contact-btn:hover{
-    background-color: red;
+    background-color: black;
 }
 
 .tags, .bottom-para{
     padding: 20px;
-    margin-left: 16% ;
+    /* margin-left: 16% ; */
 }
 .tags a{
     padding: 4px;
@@ -124,7 +128,7 @@ h4 a:hover,.legal ul li a:hover {
         display: flex;
         flex-direction: column;
         margin: auto;
-        margin-left: 16%;
+        /* margin-left: 16%; */
     }
     .social-icons{
         display: flex;

@@ -109,8 +109,8 @@ function navbar(){
                 <form id='login' class='input-group-login'>
                     <input type='text'class='input-field' id='login-email' placeholder='Email Id' required >
 		    <input type='password'class='input-field' id='login-pass' placeholder='Enter Password' required>
-            <span class='input-field-2' id="password-error" style="display:none;color:red;">Email and/or password incorrect.</span>
-		    <input type='checkbox'class='check-box'><span>Remember Password</span>
+            <span class = "span" class='input-field-2' id="password-error" style="display:none;color:red;">Email and/or password incorrect.</span>
+		    <input type='checkbox'class='check-box'><span class = "span">Remember Password</span>
 		    <button type='submit'class='submit-btn'>Log in</button>
 		 </form>
 		 <form id='register' class='input-group-register'>
@@ -119,8 +119,8 @@ function navbar(){
 		     <input type='email'id="regisemail"  class='input-field'placeholder='Email Id' required>
 		     <input type='password' id="resipass" class='input-field'placeholder='Enter Password' required>
 		     <input type='password' id="resirepass" class='input-field'placeholder='Confirm Password'  required>
-		     <input type='checkbox'class='check-box' required><span>I agree to the terms and conditions</span>
-             <span id="email-exists" class='input-field-2' style="display:none;"></span>
+		     <input type='checkbox'class='check-box' required><span class = "span">I agree to the terms and conditions</span>
+             <span class = "span" id="email-exists" class='input-field-2' style="display:none;"></span>
                     <button type='submit'class='submit-btn'>Register</button>
 	         </form>
             </div>
