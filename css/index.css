@@ -226,6 +226,9 @@ img {
   cursor: pointer;
   border-radius: 30px 30px 30px 30px;
 }
+.image-container-4{
+  flex-wrap: wrap;
+}
 .banner-button:hover {
   background-color: rgb(135, 168, 183);
   color: #ffffff;

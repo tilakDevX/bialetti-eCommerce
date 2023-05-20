@@ -83,7 +83,7 @@ function navbar(){
                         </a>
                        </button>
                        <button>
-                        <a href="#">
+                        <a href="./cartpage.html">
                             <i class="fa-solid fa-cart-plus"></i>
                         </a>
                        </button>

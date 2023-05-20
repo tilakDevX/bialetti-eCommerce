@@ -274,10 +274,10 @@ img {
 .form-box
 {
     width:380px;
-	height:480px;
+	height:525px;
 	position:relative;
 	margin:2% auto;
-	background:rgba(0,0,0,0.3);
+	background:white;
 	padding:10px;
     overflow: hidden;
 }
@@ -371,7 +371,7 @@ img {
 }
 #login input
 {
-	color:white;
+	color:black;
 	font-size:15;
 }
 #register
@@ -380,8 +380,9 @@ img {
 }
 #register input
 {
-	color:white;
-	font-size: 15;
+	color:black;
+  font-size: 16px;
+	 
 }
 
 @media screen and (max-width: 1482px)
@@ -404,7 +405,7 @@ img {
   top: 100px;
   right: 70px;
   border: 0;
-  background-color: transparent;
+  /* background-color: transparent; */
   padding-left: 20px;
   min-height: 45px;
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
